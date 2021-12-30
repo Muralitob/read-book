@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import utils from '../../utils/index';
 import './index.less'
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 function Chapter() {
   const [list, setList] = useState([])
+  const history = useHistory()
   const params = useParams()
   useEffect(() => {
     let list = utils.getChapterList(params.name)
@@ -11,7 +12,7 @@ function Chapter() {
   }, [])
 
   function play() {
-
+    history.push(`/player/${params.name}`)
   }
 
   return (
@@ -20,7 +21,7 @@ function Chapter() {
         {
           list.map((filename) => {
             return (
-              <div className='item'>
+              <div className='item' onClick={play}>
                 <span>章节：</span>
                 <span>{ filename }</span>
               </div>
