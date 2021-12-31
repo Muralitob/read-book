@@ -10,5 +10,10 @@ export default defineConfig({
     { path: '/player/:name', component: '@/pages/Player' },
   ],
   fastRefresh: {},
-  lessLoader: {}
+  lessLoader: {
+    modifyVars: {
+      'primary-color': '#B53230',
+    },
+    javascriptEnabled: true,
+  },
 });

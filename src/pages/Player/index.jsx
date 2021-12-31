@@ -1,86 +1,9 @@
 import React from 'react';
-import ReactJkMusicPlayer from 'react-jinke-music-player'
+import ReactJkMusicPlayer from 'react-jinke-music-player';
 import zhcn from '../../utils/locale';
-import 'react-jinke-music-player/assets/index.css'
-const audioList1 = [
-  {
-    name: 'Despacito',
-    singer: 'Luis Fonsi',
-    cover:
-      'http://res.cloudinary.com/alick/image/upload/v1502689731/Despacito_uvolhp.jpg',
-    musicSrc:
-      'http://res.cloudinary.com/alick/video/upload/v1502689683/Luis_Fonsi_-_Despacito_ft._Daddy_Yankee_uyvqw9.mp3',
-    // support async fetch music src. eg.
-    // musicSrc: async () => {
-    //   return await fetch('/api')
-    // },
-  },
-  {
-    name: 'Dorost Nemisham',
-    singer: 'Sirvan Khosravi',
-    cover:
-      'https://res.cloudinary.com/ehsanahmadi/image/upload/v1573758778/Sirvan-Khosravi-Dorost-Nemisham_glicks.jpg',
-    musicSrc:
-      'https://res.cloudinary.com/ehsanahmadi/video/upload/v1573550770/Sirvan-Khosravi-Dorost-Nemisham-128_kb8urq.mp3',
-  },
-]
-
-const audioList2 = [
-  {
-    name: 'Bedtime Stories',
-    singer: 'Jay Chou',
-    cover:
-      'http://res.cloudinary.com/alick/image/upload/v1502375978/bedtime_stories_bywggz.jpg',
-    musicSrc:
-      'http://res.cloudinary.com/alick/video/upload/v1502375674/Bedtime_Stories.mp3',
-  },
-  {
-    name: 'Dorost Nemisham',
-    singer: 'Sirvan Khosravi',
-    cover:
-      'https://res.cloudinary.com/ehsanahmadi/image/upload/v1573758778/Sirvan-Khosravi-Dorost-Nemisham_glicks.jpg',
-    musicSrc: () => {
-      return Promise.resolve(
-        'https://res.cloudinary.com/ehsanahmadi/video/upload/v1573550770/Sirvan-Khosravi-Dorost-Nemisham-128_kb8urq.mp3',
-      )
-    },
-  },
-  {
-    name: 'Despacito',
-    singer: 'Luis Fonsi',
-    cover:
-      'http://res.cloudinary.com/alick/image/upload/v1502689731/Despacito_uvolhp.jpg',
-    musicSrc:
-      'http://res.cloudinary.com/alick/video/upload/v1502689683/Luis_Fonsi_-_Despacito_ft._Daddy_Yankee_uyvqw9.mp3',
-  },
-]
-
-const audioList3 = [
-  {
-    name: 'Despacito',
-    singer: 'Luis Fonsi',
-    cover:
-      'http://res.cloudinary.com/alick/image/upload/v1502689731/Despacito_uvolhp.jpg',
-    musicSrc:
-      'http://res.cloudinary.com/alick/video/upload/v1502689683/Luis_Fonsi_-_Despacito_ft._Daddy_Yankee_uyvqw9.mp3',
-  },
-  {
-    name: 'Bedtime Stories',
-    singer: 'Jay Chou',
-    cover:
-      'http://res.cloudinary.com/alick/image/upload/v1502375978/bedtime_stories_bywggz.jpg',
-    musicSrc:
-      'http://res.cloudinary.com/alick/video/upload/v1502375674/Bedtime_Stories.mp3',
-  },
-  {
-    name: 'Dorost Nemisham',
-    singer: 'Sirvan Khosravi',
-    cover:
-      'https://res.cloudinary.com/ehsanahmadi/image/upload/v1573758778/Sirvan-Khosravi-Dorost-Nemisham_glicks.jpg',
-    musicSrc:
-      'https://res.cloudinary.com/ehsanahmadi/video/upload/v1573550770/Sirvan-Khosravi-Dorost-Nemisham-128_kb8urq.mp3',
-  },
-]
+import { useHistory } from 'react-router-dom';
+import 'react-jinke-music-player/lib/styles/index.less';
+import './theme.less';
 
 const audioList4 = [
   {
@@ -91,7 +14,7 @@ const audioList4 = [
     musicSrc:
       'http://res.cloudinary.com/alick/video/upload/v1502375674/Bedtime_Stories.mp3',
   },
-]
+];
 const options = {
   // audio lists model
   audioLists: audioList4,
@@ -162,7 +85,7 @@ const options = {
   defaultPlayMode: 'order',
 
   // audio mode        mini | full          [type `String`  default `mini`]
-  mode: 'mini',
+  mode: 'full',
 
   /**
    * [ type `Boolean` default 'false' ]
@@ -201,7 +124,7 @@ const options = {
   showReload: true,
 
   // download button display of the audio player panel   [type `Boolean` default `true`]
-  showDownload: true,
+  showDownload: false,
 
   // loop button display of the audio player panel   [type `Boolean` default `true`]
   showPlayMode: true,
@@ -263,37 +186,37 @@ const options = {
 
   // Music is downloaded handle
   onAudioDownload(audioInfo) {
-    console.log('audio download', audioInfo)
+    console.log('audio download', audioInfo);
   },
 
   // audio play handle
   onAudioPlay(audioInfo) {
-    console.log('audio playing', audioInfo)
+    console.log('audio playing', audioInfo);
   },
 
   // audio pause handle
   onAudioPause(audioInfo) {
-    console.log('audio pause', audioInfo)
+    console.log('audio pause', audioInfo);
   },
 
   // When the user has moved/jumped to a new location in audio
   onAudioSeeked(audioInfo) {
-    console.log('audio seeked', audioInfo)
+    console.log('audio seeked', audioInfo);
   },
 
   // When the volume has changed  min = 0.0  max = 1.0
   onAudioVolumeChange(currentVolume) {
-    console.log('audio volume change', currentVolume)
+    console.log('audio volume change', currentVolume);
   },
 
   // The single song is ended handle
   onAudioEnded(currentPlayId, audioLists, audioInfo) {
-    console.log('audio ended', currentPlayId, audioLists, audioInfo)
+    console.log('audio ended', currentPlayId, audioLists, audioInfo);
   },
 
   // audio load abort
   onAudioAbort(currentPlayId, audioLists, audioInfo) {
-    console.log('audio abort', currentPlayId, audioLists, audioInfo)
+    console.log('audio abort', currentPlayId, audioLists, audioInfo);
   },
 
   // audio play progress handle
@@ -304,12 +227,12 @@ const options = {
 
   // audio reload handle
   onAudioReload(audioInfo) {
-    console.log('audio reload:', audioInfo)
+    console.log('audio reload:', audioInfo);
   },
 
   // audio load failed error handle
   onAudioError(errMsg, currentPlayId, audioLists, audioInfo) {
-    console.error('audio error', errMsg, currentPlayId, audioLists, audioInfo)
+    console.error('audio error', errMsg, currentPlayId, audioLists, audioInfo);
   },
 
   // theme change handle
@@ -318,7 +241,7 @@ const options = {
   // },
 
   onAudioListsChange(currentPlayId, audioLists, audioInfo) {
-    console.log('audio lists change:', currentPlayId, audioLists, audioInfo)
+    console.log('audio lists change:', currentPlayId, audioLists, audioInfo);
   },
 
   onAudioPlayTrackChange(currentPlayId, audioLists, audioInfo) {
@@ -327,7 +250,7 @@ const options = {
       currentPlayId,
       audioLists,
       audioInfo,
-    )
+    );
   },
 
   // onPlayModeChange(playMode) {
@@ -339,20 +262,20 @@ const options = {
   // },
 
   onAudioListsPanelChange(panelVisible) {
-    console.log('audio lists panel visible:', panelVisible)
+    console.log('audio lists panel visible:', panelVisible);
   },
 
   onAudioListsSortEnd(oldIndex, newIndex) {
-    console.log('audio lists sort end:', oldIndex, newIndex)
+    console.log('audio lists sort end:', oldIndex, newIndex);
   },
 
   onAudioLyricChange(lineNum, currentLyric) {
-    console.log('audio lyric change:', lineNum, currentLyric)
+    console.log('audio lyric change:', lineNum, currentLyric);
   },
 
   // custom music player root node
   getContainer() {
-    return document.body
+    return document.body;
   },
 
   /**
@@ -362,32 +285,32 @@ const options = {
    * audio.crossOrigin = 'xxx' // config cross origin
    */
   getAudioInstance(audio) {
-    console.log('audio instance', audio)
+    console.log('audio instance', audio);
   },
 
   onBeforeDestroy(currentPlayId, audioLists, audioInfo) {
-    console.log('onBeforeDestroy currentPlayId: ', currentPlayId)
-    console.log('onBeforeDestroy audioLists: ', audioLists)
-    console.log('onBeforeDestroy audioInfo: ', audioInfo)
+    console.log('onBeforeDestroy currentPlayId: ', currentPlayId);
+    console.log('onBeforeDestroy audioLists: ', audioLists);
+    console.log('onBeforeDestroy audioInfo: ', audioInfo);
     return new Promise((resolve, reject) => {
       // your custom validate
       // eslint-disable-next-line no-alert
       if (window.confirm('Are you confirm destroy the player?')) {
         // if resolve, player destroyed
-        resolve()
+        resolve();
       } else {
         // if reject, skip.
-        reject()
+        reject();
       }
-    })
+    });
   },
 
   onDestroyed(currentPlayId, audioLists, audioInfo) {
-    console.log('onDestroyed:', currentPlayId, audioLists, audioInfo)
+    console.log('onDestroyed:', currentPlayId, audioLists, audioInfo);
   },
 
   onCoverClick(mode, audioLists, audioInfo) {
-    console.log('onCoverClick: ', mode, audioLists, audioInfo)
+    console.log('onCoverClick: ', mode, audioLists, audioInfo);
   },
 
   // custom audio title
@@ -434,13 +357,24 @@ const options = {
   //   console.log(downloadInfo.filename)
   //   console.log(downloadInfo.mimeType)
   // },
-}
-
+};
 
 function Player() {
+  const history = useHistory()
+  let audio = null;
   return (
     <div>
-       <ReactJkMusicPlayer {...options}/>
+      <ReactJkMusicPlayer
+        {...options}
+        icon={{
+          close: <div onClick={() => {
+            history.goBack()
+          }} style={{color: 'red'}}> { '<'}</div>
+        }}
+        getAudioInstance={(ai) => {
+          audio = ai;
+        }}
+      />
     </div>
   );
 }

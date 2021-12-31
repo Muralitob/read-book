@@ -1,7 +1,31 @@
 .chapter {
+  height: 100%;
+  overflow: auto;
+  // position: relative;
+  .img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background-color: red;
+    height: 30%;
+    width: 100%;
+  }
   .list {
+    .wrapper {
+      overflow-y: scroll;
+    }
+    overflow-y: scroll;
+    position: relative;
+
+    top: 240px;
+    z-index: 99;
+    background-color: #fff;
+    // transform: translateY(0px);
+    // overflow: hidden;
+    // height: 80%;
+    height: 80%;
+    border: 1px solid #ccc;
     margin: 0 auto;
-    width: 80%;
     .item {
       margin: 12px 0;
     }
