@@ -2,6 +2,7 @@ import React from 'react';
 import ReactJkMusicPlayer from 'react-jinke-music-player';
 import zhcn from '../../utils/locale';
 import { useHistory } from 'react-router-dom';
+import backurl from '../../assets/images/back.png';
 import 'react-jinke-music-player/lib/styles/index.less';
 import './theme.less';
 
@@ -314,16 +315,22 @@ const options = {
 };
 
 function Player() {
-  const history = useHistory()
+  const history = useHistory();
   let audio = null;
   return (
     <div>
       <ReactJkMusicPlayer
         {...options}
         icon={{
-          close: <div onClick={() => {
-            history.goBack()
-          }} style={{color: 'red'}}> { '<'}</div>
+          close: (
+            <img
+              onClick={() => {
+                history.goBack();
+              }}
+              style={{width: 18}}
+              src={backurl}
+            />
+          ),
         }}
         getAudioInstance={(ai) => {
           audio = ai;

@@ -9,9 +9,9 @@ export default defineConfig({
     { path: '/chapter/:name', component: '@/pages/Chapter' },
     { path: '/player/:name', component: '@/pages/Player' },
   ],
-  // dynamicImport: {
+  dynamicImport: {
 
-  // },
+  },
   fastRefresh: {},
   lessLoader: {
     modifyVars: {
