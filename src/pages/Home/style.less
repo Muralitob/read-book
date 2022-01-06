@@ -2,17 +2,70 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  background: url('../../assets/images/bg.png') no-repeat ;
+  background-size: cover;
+  // justify-content: flex-end;
+  align-items: center;
+  .logo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+      border-radius: 50%;
+      background-color: #fff;
+      width: 120px;
+      height: 120px;
+    }
+  }
   .stage {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    height: 70vh;
     .book {
-      text-align: center;
-      // line-height: 320px;
-      width: 240px;
+      // text-align: center;
+      width: 100%;
+      height: 280px;
       margin: 0 12px;
-      border: 1px solid #ccc;
-      height: 320px;
+      background-color: #F2F2F2;
+      border-radius: 10px;
+      display: flex;
+      padding: 20px;
+      .info {
+        flex: 4;
+        display: flex;
+        flex-direction: column;
+        padding-top: 12px;
+        // justify-content: space-between;
+        align-items: flex-start;
+        .title {
+          color: #000;
+          font-size: 16px;
+          font-weight: 500;
+          margin-bottom: 16px;
+        }
+        .author {
+          color: #737272;
+          height: 100px;
+        }
+        .btn {
+          width: 140px;
+          position: relative;
+        left: -12px;
+        }
+        img {
+          width: 100%;
+        }
+      }
+      .cover {
+        flex: 2;
+        img {
+          width: 130px;
+          box-shadow: rgba(0, 0, 0, 0.5) 2.05px 2.05px 2.7px;
+        }
+      }
     }
   }
 }

@@ -133,7 +133,7 @@ const options = {
   showThemeSwitch: true,
 
   // lyric display of the audio player panel   [type `Boolean` default `false`]
-  showLyric: true,
+  showLyric: false,
 
   // destroy player button display  [type `Boolean` default `false`]
   showDestroy: true,
@@ -288,55 +288,9 @@ const options = {
     console.log('audio instance', audio);
   },
 
-  onBeforeDestroy(currentPlayId, audioLists, audioInfo) {
-    console.log('onBeforeDestroy currentPlayId: ', currentPlayId);
-    console.log('onBeforeDestroy audioLists: ', audioLists);
-    console.log('onBeforeDestroy audioInfo: ', audioInfo);
-    return new Promise((resolve, reject) => {
-      // your custom validate
-      // eslint-disable-next-line no-alert
-      if (window.confirm('Are you confirm destroy the player?')) {
-        // if resolve, player destroyed
-        resolve();
-      } else {
-        // if reject, skip.
-        reject();
-      }
-    });
-  },
-
-  onDestroyed(currentPlayId, audioLists, audioInfo) {
-    console.log('onDestroyed:', currentPlayId, audioLists, audioInfo);
-  },
-
   onCoverClick(mode, audioLists, audioInfo) {
     console.log('onCoverClick: ', mode, audioLists, audioInfo);
   },
-
-  // custom audio title
-  // renderAudioTitle(audioInfo) {
-  //   return <a href="#">{audioInfo.name}</a>
-  // },
-
-  // onPlayIndexChange (playIndex) {
-  //   console.log('onPlayIndexChange: ', playIndex);
-  // }
-
-  // transform audio info like return a Promise
-
-  /**
-   * @return
-   *  {
-   *    src: 'xxx',
-   *    filename: 'xxx',
-   *    mimeType: 'xxx'
-   *  }
-   */
-  // onBeforeAudioDownload() {
-  //   return Promise.resolve({
-  //     src: '1.mp3',
-  //   })
-  // },
 
   /**
    * customer download handler
