@@ -39,7 +39,7 @@ function Chapter() {
         name,
         singer: info.author,
         cover: `http://121.41.86.168:9999/cover/${params.name}-cover.png`,
-        musicSrc: `http://121.41.86.168:9999/${params.name}/${item}`,
+        musicSrc: `http://121.41.86.168:9999/${params.name}/${item}.mp3`,
       })
       return {
         name,
