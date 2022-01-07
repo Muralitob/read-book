@@ -9,7 +9,7 @@ function getChapterList(name) {
     req = require.context(`../assets/book2`, true, /.mp3$/);
   }
   let nameList = req.keys().map(key => {
-    const name = key.match(/([a-zA-Z0-9].*)$/)[1];
+    let name = key.match(/([a-zA-Z0-9].*)$/)[1];
     return name
   });
   return nameList

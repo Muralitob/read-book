@@ -10,7 +10,7 @@ export default defineConfig({
   routes: [
     { path: '/', component: '@/pages/Home' },
     { path: '/chapter/:name', component: '@/pages/Chapter' },
-    { path: '/player/:name', component: '@/pages/Player' },
+    { path: '/player/:current', component: '@/pages/Player' },
   ],
   dynamicImport: {
 
