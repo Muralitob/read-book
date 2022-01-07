@@ -32,7 +32,9 @@ function Chapter() {
     let _playlist = []
     let list = datasource.map((item) => {
       let name = item.split('-')[1]
-      let long = item.split('-')[2]
+      let long = item.split('-')[2].split('.')[0]
+      var reg = new RegExp( 'm' , "g" )
+      long = long.replace(reg, "'")
       _playlist.push({
         name,
         singer: info.author,
@@ -78,7 +80,7 @@ function Chapter() {
                   <div style={{ color: '#888' }}>{info.title}</div>
                 </div>
               </div>
-              <div className="sec">{item.lang}</div>
+              <div className="sec">{item.long}</div>
             </div>
           );
         })}
